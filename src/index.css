@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-primary: #AF31D3;
+  --color-secondary: #34A4D8;
+  --color-text: var(--text);
+  
+  --animate-fade-in: fadeIn 1s ease-out forwards;
+  --animate-slide-up: slideUp 0.8s ease-out forwards;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --text: #0f172a;
+    --text-secondary: #64748b;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --card-bg: #ffffff;
+    --tag-bg: #f1f5f9;
+    --divider: rgba(0, 0, 0, 0.08);
+    color-scheme: light;
+  }
+
+  :root.dark {
+    --background: #0a0a0a;
+    --text: #ffffff;
+    --text-secondary: #e2e8f0;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --tag-bg: rgba(255, 255, 255, 0.06);
+    --divider: rgba(255, 255, 255, 0.1);
+    color-scheme: dark;
+  }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html, body {
+  @apply overflow-x-hidden transition-colors duration-500;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  @apply antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Design System Utilities */
+.theme-bg {
+  background-color: var(--background);
+  transition: background-color 0.5s ease;
+}
+
+.theme-text-primary {
+  color: var(--text);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-card {
+  background-color: var(--card-bg);
+  @apply transition-colors duration-500;
+}
+
+.theme-tag {
+  background-color: var(--tag-bg);
+  @apply transition-colors duration-500;
+}
+
+.glass {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+}
+
+.btn-primary {
+  @apply px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 hover:shadow-primary/40;
+}
+
+.main-container {
+  @apply relative overflow-x-hidden;
+}
+
+/* Section transitions */
+section {
+  @apply transition-colors duration-500;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 dark:bg-zinc-800 rounded-full;
+}
