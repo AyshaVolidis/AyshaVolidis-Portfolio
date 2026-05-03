@@ -3,7 +3,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ExternalLink, Github, ChevronRight, ChevronLeft } from "lucide-react";
 
 const projects = [
-
+    {
+        title: "Fashion-Ecommerce",
+        tech: ["Next.js","Node.js", "Express","Stripe"],
+        description: "Full-stack e-commerce platform enabling users to browse products, manage carts, and complete secure online payments.",
+        link: "https://fashion-ecommerce-tan.vercel.app",
+        github: "https://github.com/AyshaVolidis/Fashion-ecommerce",
+    },
     {
         title: "Chat Lingua",
         tech: ["Node.js", "Express", "WebSocket"],
