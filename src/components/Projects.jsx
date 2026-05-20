@@ -4,6 +4,12 @@ import { ExternalLink, Github, ChevronRight, ChevronLeft } from "lucide-react";
 
 const projects = [
     {
+        title: "FitAI",
+        tech: ["React","TanStack", "Supabase","Gemini AI"],
+        description: "AI-powered fitness platform with personalized workouts, nutrition tracking, and AI coaching. Built a full-stack application with Supabase authentication, progress tracking, and Gemini AI integration for adaptive workout plans and coaching chat.",
+        github: "https://github.com/AyshaVolidis/FitWithAI",
+    },
+    {
         title: "Fashion-Ecommerce",
         tech: ["Next.js","Node.js", "Express","Stripe"],
         description: "Full-stack e-commerce platform enabling users to browse products, manage carts, and complete secure online payments.",
@@ -101,8 +107,8 @@ const Projects = () => {
                                         <ExternalLink className="text-primary" size={20} />
                                     </div>
                                     <div className="flex gap-4">
-                                        {project.github && <a href={project.github} className="text-zinc-500 hover:text-primary dark:hover:text-white transition-colors" aria-label="Github Repo"><Github size={20} /></a>}
-                                        {project.link && <a href={project.link} className="text-zinc-500 hover:text-primary dark:hover:text-white transition-colors" aria-label="Live Demo"><ExternalLink size={20} /></a>}
+                                        {project.github && <a href={project.github} className="text-zinc-500 hover:text-primary dark:hover:text-white transition-colors" aria-label="Github Repo" target="_blank"><Github size={20} /></a>}
+                                        {project.link && <a href={project.link} className="text-zinc-500 hover:text-primary dark:hover:text-white transition-colors" aria-label="Live Demo" target="_blank"><ExternalLink size={20} /></a>}
                                     </div>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 theme-text-primary">{project.title}</h3>
