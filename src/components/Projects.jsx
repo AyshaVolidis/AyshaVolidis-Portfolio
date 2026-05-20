@@ -15,7 +15,7 @@ const projects = [
         tech: ["Node.js", "Express", "WebSocket"],
         description: "Real-time language learning platform using WebSockets for seamless communication.",
         link: "https://chatlingua.onrender.com/",
-        github: "https://github.com/AyshaVolidis/ChatLingua",
+        github: "https://github.com/Yaffa-Solutions/ChatLingua",
     },
     {
         title: "Recipe App",
