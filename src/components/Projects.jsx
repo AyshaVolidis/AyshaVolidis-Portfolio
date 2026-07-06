@@ -1,17 +1,18 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ExternalLink, Github, ChevronRight, ChevronLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, ChevronRight, ChevronLeft, Sparkles } from "lucide-react";
 
 const projects = [
     {
         title: "FitAI",
-        tech: ["React","TanStack", "Supabase","Gemini AI"],
+        tech: ["React", "TanStack", "Supabase", "Gemini AI"],
         description: "AI-powered fitness platform with personalized workouts, nutrition tracking, and AI coaching. Built a full-stack application with Supabase authentication, progress tracking, and Gemini AI integration for adaptive workout plans and coaching chat.",
+        link: "https://fit-with-ai.ayshavolidis.workers.dev/",
         github: "https://github.com/AyshaVolidis/FitWithAI",
     },
     {
         title: "Fashion-Ecommerce",
-        tech: ["Next.js","Node.js", "Express","Stripe"],
+        tech: ["Next.js", "Node.js", "Express", "Stripe"],
         description: "Full-stack e-commerce platform enabling users to browse products, manage carts, and complete secure online payments.",
         link: "https://fashion-ecommerce-tan.vercel.app",
         github: "https://github.com/AyshaVolidis/Fashion-ecommerce",
@@ -46,13 +47,85 @@ const projects = [
     },
 ];
 
+const ProjectCard = ({ project, idx }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: idx * 0.1 }}
+            className="min-w-[320px] md:min-w-[420px] snap-center"
+        >
+            <div className="group relative h-full">
+                {/* Gradient Border */}
+                <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-zinc-200/50 dark:from-white/10 via-transparent to-transparent group-hover:from-primary/30 group-hover:via-secondary/20 group-hover:to-transparent transition-all duration-700" />
+
+                {/* Glow Effect */}
+                <div className="absolute -inset-1 rounded-[34px] bg-gradient-to-br from-primary/10 to-secondary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Card Content */}
+                <div className="relative h-full theme-card dark:backdrop-blur-md rounded-[31px] p-8 flex flex-col shadow-sm dark:shadow-[0_0_30px_rgba(175,49,211,0.05)] transition-all duration-500">
+                    {/* Top Row */}
+                    <div className="flex items-start justify-between mb-6">
+                        <div className="p-3 rounded-2xl theme-tag border border-zinc-100 dark:border-white/5 shadow-sm">
+                            <Sparkles className="text-primary" size={20} />
+                        </div>
+                        <div className="flex items-center gap-3">
+                            {project.github && (
+                                <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-full theme-tag text-zinc-500 hover:text-primary dark:hover:text-white hover:bg-primary/10 transition-all"
+                                    aria-label="GitHub Repository"
+                                >
+                                    <Github size={18} />
+                                </a>
+                            )}
+                            {project.link && (
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-full theme-tag text-zinc-500 hover:text-secondary dark:hover:text-white hover:bg-secondary/10 transition-all"
+                                    aria-label="Live Demo"
+                                >
+                                    <ExternalLink size={18} />
+                                </a>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Project Info */}
+                    <h3 className="text-xl font-bold mb-3 theme-text-primary">{project.title}</h3>
+                    <p className="theme-text-secondary text-sm mb-8 flex-grow leading-relaxed font-medium">
+                        {project.description}
+                    </p>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-100 dark:border-white/5">
+                        {project.tech.map((t) => (
+                            <span
+                                key={t}
+                                className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold bg-gradient-to-r from-primary/10 to-secondary/10 text-primary dark:text-secondary"
+                            >
+                                {t}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
 const Projects = () => {
     const scrollRef = useRef(null);
 
     const scroll = (direction) => {
         const { current } = scrollRef;
         if (current) {
-            const scrollAmount = 400;
+            const scrollAmount = 440;
             current.scrollBy({
                 left: direction === "left" ? -scrollAmount : scrollAmount,
                 behavior: "smooth",
@@ -61,67 +134,56 @@ const Projects = () => {
     };
 
     return (
-        <section id="projects" className="py-24 px-6 theme-bg overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex  items-center  justify-between mb-12 gap-8">
+        <section id="projects" className="py-24 px-6 theme-bg overflow-hidden relative">
+            <div className="absolute inset-0 grid-bg opacity-30" />
+
+            <div className="max-w-7xl mx-auto relative z-10">
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+                >
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gradient">Featured Projects</h2>
-                        <p className="theme-text-secondary max-w-xl font-medium">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
+                            <Sparkles size={12} />
+                            My Work
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4 theme-text-primary">
+                            Featured <span className="text-gradient">Projects</span>
+                        </h2>
+                        <p className="theme-text-secondary max-w-xl font-medium text-base">
                             Explore a collection of my recent work, ranging from full-stack applications to interactive frontend experiments.
                         </p>
                     </div>
-                    <div className="flex gap-4">
+
+                    {/* Navigation Buttons */}
+                    <div className="flex gap-3">
                         <button
                             onClick={() => scroll("left")}
-                            className="p-3 rounded-full border border-zinc-200 dark:border-white/10 hover:bg-white/5 transition-all text-zinc-500 dark:text-white"
+                            className="p-3 rounded-full glass hover:bg-zinc-100 dark:hover:bg-white/5 transition-all text-zinc-500 dark:text-zinc-400 hover:text-primary shadow-sm"
                             aria-label="Previous Project"
                         >
-                            <ChevronLeft size={24} />
+                            <ChevronLeft size={20} />
                         </button>
                         <button
                             onClick={() => scroll("right")}
-                            className="p-3 rounded-full border border-zinc-200 dark:border-white/10 hover:bg-white/5 transition-all text-zinc-500 dark:text-white"
+                            className="p-3 rounded-full glass hover:bg-zinc-100 dark:hover:bg-white/5 transition-all text-zinc-500 dark:text-zinc-400 hover:text-primary shadow-sm"
                             aria-label="Next Project"
                         >
-                            <ChevronRight size={24} />
+                            <ChevronRight size={20} />
                         </button>
                     </div>
-                </div>
+                </motion.div>
 
+                {/* Scrollable Projects */}
                 <div
                     ref={scrollRef}
-                    className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory no-scrollbar"
+                    className="flex gap-8 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"
                 >
                     {projects.map((project, idx) => (
-                        <motion.div
-                            key={project.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="min-w-[320px] md:min-w-[400px]  snap-center group p-[1px] rounded-[32px] bg-gradient-to-br from-zinc-200 dark:from-white/10 to-transparent hover:from-primary/40 transition-all duration-500"
-                        >
-                            <div className="h-full theme-card dark:backdrop-blur-md rounded-[31px] p-8 flex flex-col shadow-sm dark:shadow-[0_0_30px_rgba(175,49,211,0.1)] transition-all">
-                                <div className="flex justify-between items-start mb-6">
-                                    <div className="p-3 rounded-2xl theme-tag border border-zinc-100 dark:border-white/10 shadow-sm">
-                                        <ExternalLink className="text-primary" size={20} />
-                                    </div>
-                                    <div className="flex gap-4">
-                                        {project.github && <a href={project.github} className="text-zinc-500 hover:text-primary dark:hover:text-white transition-colors" aria-label="Github Repo" target="_blank"><Github size={20} /></a>}
-                                        {project.link && <a href={project.link} className="text-zinc-500 hover:text-primary dark:hover:text-white transition-colors" aria-label="Live Demo" target="_blank"><ExternalLink size={20} /></a>}
-                                    </div>
-                                </div>
-                                <h3 className="text-xl font-bold mb-3 theme-text-primary">{project.title}</h3>
-                                <p className="theme-text-secondary text-sm mb-8 flex-grow leading-relaxed font-medium">
-                                    {project.description}
-                                </p>
-                                <div className="flex flex-wrap gap-3">
-                                    {project.tech.map((t) => (
-                                        <span key={t} className="text-[10px] uppercase tracking-widest font-bold text-primary">{t}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
+                        <ProjectCard key={project.title} project={project} idx={idx} />
                     ))}
                 </div>
             </div>

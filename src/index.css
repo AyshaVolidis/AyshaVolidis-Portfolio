@@ -5,9 +5,18 @@
   --color-primary: #AF31D3;
   --color-secondary: #34A4D8;
   --color-text: var(--text);
-  
+
   --animate-fade-in: fadeIn 1s ease-out forwards;
   --animate-slide-up: slideUp 0.8s ease-out forwards;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-float-delayed: float 4s ease-in-out infinite;
+  --animate-float-slow: float 6s ease-in-out infinite;
+  --animate-spin-slow: spinSlow 12s linear infinite;
+  --animate-spin-slower: spinSlow 20s linear infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-pulse-soft: pulseSoft 2s ease-in-out infinite;
+  --animate-glow-pulse: glowPulse 3s ease-in-out infinite;
+  --animate-scale-in: scaleIn 0.5s ease-out forwards;
 
   @keyframes fadeIn {
     0% { opacity: 0; }
@@ -16,6 +25,30 @@
   @keyframes slideUp {
     0% { transform: translateY(20px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes pulseSoft {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+  }
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(175, 49, 211, 0.15), 0 0 40px rgba(52, 164, 216, 0.05); }
+    50% { box-shadow: 0 0 30px rgba(175, 49, 211, 0.3), 0 0 60px rgba(52, 164, 216, 0.1); }
+  }
+  @keyframes scaleIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
   }
 }
 
@@ -29,6 +62,7 @@
     --card-bg: #ffffff;
     --tag-bg: #f1f5f9;
     --divider: rgba(0, 0, 0, 0.08);
+    --grid-color: rgba(0, 0, 0, 0.03);
     color-scheme: light;
   }
 
@@ -41,6 +75,7 @@
     --card-bg: rgba(255, 255, 255, 0.03);
     --tag-bg: rgba(255, 255, 255, 0.06);
     --divider: rgba(255, 255, 255, 0.1);
+    --grid-color: rgba(255, 255, 255, 0.02);
     color-scheme: dark;
   }
 }
@@ -61,7 +96,6 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Design System Utilities */
 .theme-bg {
   background-color: var(--background);
   transition: background-color 0.5s ease;
@@ -95,26 +129,52 @@ body {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
 }
 
+.text-gradient-alt {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary;
+}
+
 .btn-primary {
-  @apply px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 hover:shadow-primary/40;
+  @apply px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 hover:shadow-primary/40;
+}
+
+.btn-outline {
+  @apply px-8 py-3 rounded-full font-semibold transition-all duration-300 border border-zinc-200 dark:border-white/10 hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300 hover:border-primary/30 shadow-sm;
 }
 
 .main-container {
   @apply relative overflow-x-hidden;
 }
 
-/* Section transitions */
+.grid-bg {
+  background-image: radial-gradient(var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 section {
   @apply transition-colors duration-500;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  @apply bg-zinc-300 dark:bg-zinc-800 rounded-full;
+  @apply bg-zinc-300 dark:bg-zinc-800 rounded-full hover:bg-zinc-400 dark:hover:bg-zinc-700 transition-colors;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scroll-behavior: smooth;
 }
