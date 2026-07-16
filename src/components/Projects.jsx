@@ -5,6 +5,7 @@ import lexisImg from "../images/lexis.ayshavolidis.workers.dev_.png";
 import fitaiImg from "../images/FitWithAI.png";
 import recipeImg from "../images/ayshavolidis.github.io_Recipe-App_.png";
 import rickmortyImg from "../images/rockmortyapi.vercel.app_.png";
+import chatImg from "../images/chat-lingua.png";
 
 const projects = [
   {
@@ -34,7 +35,7 @@ const projects = [
       "Real-time language learning platform using WebSockets for seamless communication.",
     link: "https://chatlingua.onrender.com/",
     github: "https://github.com/Yaffa-Solutions/ChatLingua",
-    screenshot: null,
+    screenshot: chatImg,
     gradient: "from-cyan-500/30 via-sky-500/20 to-indigo-600/30",
   },
   {
