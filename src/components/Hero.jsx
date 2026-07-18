@@ -94,8 +94,7 @@ const Hero = () => {
                     variants={itemVariants}
                     className="theme-text-secondary text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto font-medium"
                 >
-                    Full Stack Developer & UX/UI Designer. I build beautiful, scalable,
-                    and user-centered web solutions with React, Node.js, and ASP.NET Core.
+                    Full-Stack Engineer specialized in shipping performance-driven web apps, modern React architectures, and seamless AI integrations.
                 </motion.p>
 
                 {/* CTA Buttons */}
