@@ -5,10 +5,12 @@ import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import MagicCursor from "./components/MagicCursor";
 
 function App() {
   return (
     <ThemeProvider>
+      <MagicCursor />
       <div className="main-container min-h-screen theme-bg">
         {/* Background decoration */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-background transition-colors duration-500">

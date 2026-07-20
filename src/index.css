@@ -87,6 +87,11 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
+  cursor: none;
+}
+
+a, button, input, textarea, select, [role='button'], label {
+  cursor: none;
 }
 
 body {
