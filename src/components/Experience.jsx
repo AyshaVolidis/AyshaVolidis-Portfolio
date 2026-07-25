@@ -10,6 +10,30 @@ import {
 
 const experienceData = [
   {
+    company: "PDES (Palestinian Digital Empowerment System)",
+    description: "Digital empowerment platform driving AI and tech capacity building.",
+    roles: [
+      {
+        title: "AI Digital Product Development Fellow",
+        period: "May 2026 - Jun 2026",
+        description:
+          "Participated in an intensive hands-on program focusing on building end-to-end digital products powered by modern AI tools.",
+        contributions: [
+          "Executed product discovery, user research, and market strategy to validate digital product ideas",
+          "Implemented AI-assisted workflows and tools to optimize prototyping and product development speed",
+          "Developed and validated practical projects applying modern product methodologies and AI integrations",
+        ],
+        tools: [
+          "AI Workflows",
+          "Product Discovery",
+          "User Research",
+          "Prototyping",
+          "Product Validation",
+        ],
+      },
+    ],
+  },
+  {
     company: "Gaza Sky Geeks",
     description: "Leading tech bootcamp and innovation hub in Palestine.",
     roles: [
@@ -107,11 +131,10 @@ const CompanyTab = ({ company, isActive, onClick, idx }) => (
     viewport={{ once: true }}
     transition={{ delay: idx * 0.1, type: "spring", stiffness: 200, damping: 25 }}
     onClick={onClick}
-    className={`relative w-full text-left px-5 py-4 rounded-xl transition-all duration-300 group ${
-      isActive
+    className={`relative w-full text-left px-5 py-4 rounded-xl transition-all duration-300 group ${isActive
         ? "glass border-primary/30 shadow-lg shadow-primary/5"
         : "hover:glass border border-transparent hover:border-white/5"
-    }`}
+      }`}
   >
     {isActive && (
       <motion.div
@@ -122,17 +145,15 @@ const CompanyTab = ({ company, isActive, onClick, idx }) => (
     )}
     <div className="relative z-10 flex items-center gap-3">
       <div
-        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-          isActive
+        className={`w-2 h-2 rounded-full transition-all duration-300 ${isActive
             ? "bg-primary shadow-lg shadow-primary/50"
             : "bg-zinc-400 group-hover:bg-primary/50"
-        }`}
+          }`}
       />
       <div className="flex-1 min-w-0">
         <span
-          className={`text-sm font-bold block truncate transition-colors duration-300 ${
-            isActive ? "theme-text-primary" : "theme-text-secondary group-hover:theme-text-primary"
-          }`}
+          className={`text-sm font-bold block truncate transition-colors duration-300 ${isActive ? "theme-text-primary" : "theme-text-secondary group-hover:theme-text-primary"
+            }`}
         >
           {company}
         </span>
@@ -145,11 +166,10 @@ const CompanyTab = ({ company, isActive, onClick, idx }) => (
       </div>
       <ChevronRight
         size={14}
-        className={`transition-all duration-300 ${
-          isActive
+        className={`transition-all duration-300 ${isActive
             ? "text-primary opacity-100 translate-x-0"
             : "text-zinc-500 opacity-0 -translate-x-2 group-hover:opacity-50 group-hover:translate-x-0"
-        }`}
+          }`}
       />
     </div>
   </motion.button>
