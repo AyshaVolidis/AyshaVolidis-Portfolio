@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import lexisImg from "../images/lexis.ayshavolidis.workers.dev_.png";
+import transcriptImg from "../images/trancript.netlify.app_(Nest Hub Max).png";
 import fitaiImg from "../images/FitWithAI.png";
 import recipeImg from "../images/ayshavolidis.github.io_Recipe-App_.png";
 import rickmortyImg from "../images/rockmortyapi.vercel.app_.png";
@@ -9,13 +9,13 @@ import chatImg from "../images/chat-lingua.png";
 
 const projects = [
   {
-    title: "Lexis",
-    tech: ["React", "TanStack", "Supabase", "Groq AI"],
+    title: "Meeting Transcriber",
+    tech: ["React","Supabase", "Groq AI (Whisper)","Chrome Extension API"],
     description:
-      "AI-powered English vocabulary platform designed to accelerate language acquisition through personalized training. Built a full-stack application featuring Groq AI integration for generating dynamic daily word sets, adaptive contextual stories, and interactive quizzes, complete with a robust analytics dashboard tracking CEFR-aligned vocabulary growth",
-    link: "https://lexis.ayshavolidis.workers.dev/",
-    github: "https://github.com/AyshaVolidis/Lexis",
-    screenshot: lexisImg,
+      "Meeting Transcriber is a Chrome Extension with a web dashboard that captures Google Meet and Zoom audio directly from the browser without requiring a meeting bot. It uses Groq Whisper for real-time speech-to-text transcription, with Supabase for data storage, allowing users to review transcripts, generate AI-powered meeting summaries, and extract action items.",
+    link: "https://trancript.netlify.app/",
+    github: "https://github.com/AyshaVolidis/Meeting-Transcriber",
+    screenshot: transcriptImg,
     gradient: "from-emerald-500/30 via-teal-500/20 to-blue-600/30",
   },
   {

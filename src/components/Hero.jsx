@@ -114,7 +114,7 @@ const Hero = () => {
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </a>
                     <a
-                        href="https://docs.google.com/document/d/1C19RS3B3UHGYG7Lq2R6Z5mOZzlGeIfgRaL21-WN4tHk/edit?tab=t.0"
+                        href="https://docs.google.com/document/d/1t87HkBVbp67xz-S5_6CRNPglefABphNJ/edit?usp=sharing&ouid=109758310099105182343&rtpof=true&sd=true"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-outline flex items-center gap-2 group text-sm md:text-base w-full sm:w-auto justify-center"
